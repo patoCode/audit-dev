@@ -1,36 +1,105 @@
-<div class="sidebar">
-    <ul class="widget widget-menu unstyled">
-        <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Dashboard
-        </a></li>
-        <li><a href="activity.html"><i class="menu-icon icon-bullhorn"></i>News Feed </a>
-        </li>
-        <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
-            11</b> </a></li>
-        <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
-            19</b> </a></li>
-    </ul>
-    <!--/.widget-nav-->
-
-
-    <ul class="widget widget-menu unstyled">
-        <li><a href="ui-button-icon.html"><i class="menu-icon icon-bold"></i> Buttons </a></li>
-        <li><a href="ui-typography.html"><i class="menu-icon icon-book"></i>Typography </a></li>
-        <li><a href="form.html"><i class="menu-icon icon-paste"></i>Forms </a></li>
-        <li><a href="table.html"><i class="menu-icon icon-table"></i>Tables </a></li>
-        <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
-    </ul>
-    <!--/.widget-nav-->
-    <ul class="widget widget-menu unstyled">
-        <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i class="menu-icon icon-cog">
-        </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-        </i>More Pages </a>
-            <ul id="togglePages" class="collapse unstyled">
-                <li><a href="other-login.html"><i class="icon-inbox"></i>Login </a></li>
-                <li><a href="other-user-profile.html"><i class="icon-inbox"></i>Profile </a></li>
-                <li><a href="other-user-listing.html"><i class="icon-inbox"></i>All Users </a></li>
-            </ul>
-        </li>
-        <li><a href="#"><i class="menu-icon icon-signout"></i>Logout </a></li>
-    </ul>
-</div>
-<!--/.sidebar-->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Parametros</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>/Dashboard/Actividad">Actividad</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>/Dashboard/Periodo">Periodo</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>/Dashboard/pais">Pais</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>/Dashboard/cuidad">Ciudad</a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">Form elements</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+              <i class="icon-bar-graph menu-icon"></i>
+              <span class="menu-title">Charts</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="charts">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+              <i class="icon-grid-2 menu-icon"></i>
+              <span class="menu-title">Tables</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="tables">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+              <i class="icon-contract menu-icon"></i>
+              <span class="menu-title">Icons</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="icons">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">User Pages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
+              <i class="icon-ban menu-icon"></i>
+              <span class="menu-title">Error pages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="error">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/documentation/documentation.html">
+              <i class="icon-paper menu-icon"></i>
+              <span class="menu-title">Documentation</span>
+            </a>
+          </li> -->
+        </ul>
+      </nav>

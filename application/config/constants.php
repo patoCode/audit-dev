@@ -84,6 +84,10 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
+
+define('SIST_NAME','AUDITv1');
+
+
 /* STATUS VARIABLES*/
 define('STATUS_ACTIVE', 'activo');
 define('STATUS_INACTIVE', 'inactivo');

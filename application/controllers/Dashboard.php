@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 /*IMPORT CLASS CRUD */
 require_once APPPATH.'controllers/administration/ActividadCRUD.php';
 require_once APPPATH.'controllers/administration/PeriodoCRUD.php';
@@ -8,12 +7,9 @@ require_once APPPATH.'controllers/administration/CertificadoCRUD.php';
 require_once APPPATH.'controllers/administration/PaisCRUD.php';
 require_once APPPATH.'controllers/administration/CiudadCRUD.php';
 
-
-
-
 class Dashboard extends CI_Controller {
 
-	private $admin_template_route = 'Administration/base';
+	private $admin_template_route = 'Administration/_base';
 
 	function __construct(){
 		parent::__construct();

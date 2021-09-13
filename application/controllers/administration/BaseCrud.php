@@ -19,7 +19,7 @@ class BaseCrud
 		$this->crud->set_subject($subject);
 		$this->crud->set_table($table);
 		if(!$showDeleteRows)
-			$this->crud->where($table.'.is_delete','vigente');
+			$this->crud->where($table.'.ESTADO_REG','vigente');
 
 		if($softDelete)
 			$this->crud->callback_delete(array($this,'_delete'));
