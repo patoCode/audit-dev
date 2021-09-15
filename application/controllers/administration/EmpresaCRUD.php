@@ -4,7 +4,7 @@ require_once APPPATH.'controllers/administration/BaseCrud.php';
 class EmpresaCRUD
 {
 	private $crud;
-	private $showColumns   = ['CIUDAD','BANDERA','CODIGO_CIUDAD','ID_PAIS'];
+	private $showColumns   = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT'];
 	private $createColumns = ['CIUDAD','BANDERA','CODIGO_CIUDAD','ID_PAIS','USER_REG','FECHA_REG'];
 	private $editColumns   = ['CIUDAD','BANDERA','CODIGO_CIUDAD','ID_PAIS','ESTADO','USER_MOD', 'FECHA_MOD'];
 

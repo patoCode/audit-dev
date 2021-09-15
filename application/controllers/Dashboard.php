@@ -12,8 +12,7 @@ require_once APPPATH.'controllers/administration/PaisCRUD.php';
 require_once APPPATH.'controllers/administration/CiudadCRUD.php';
 require_once APPPATH.'controllers/administration/ObligacionTributariaCRUD.php';
 require_once APPPATH.'controllers/administration/InstitucionCRUD.php';
-
-
+require_once APPPATH.'controllers/administration/EmpresaCRUD.php';
 
 class Dashboard extends CI_Controller {
 
@@ -23,37 +22,6 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->model('');
 	}
-	public function institucion()
-	{
-		$objeto = new InstitucionCRUD("Institucion(es)");
-		try {
-			$_output = $objeto->getCRUD();
-			$this->_render_view($_output);
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	public function obligacion()
-	{
-		$objeto = new ObligacionTributariaCRUD("Obligacion Tributaria");
-		try {
-			$_output = $objeto->getCRUD();
-			$this->_render_view($_output);
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	public function sociedad()
-	{
-		$objeto = new SociedadCRUD("Sociedad");
-		try {
-			$_output = $objeto->getCRUD();
-			$this->_render_view($_output);
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-
 	public function cliente()
 	{
 		try{
@@ -157,6 +125,48 @@ class Dashboard extends CI_Controller {
 		}
 
 	}
+	public function empresa()
+	{
+	 	$objeto = new EmpresaCRUD("Empresa(s)");
+		try {
+			$_output = $objeto->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+	public function institucion()
+	{
+		$objeto = new InstitucionCRUD("Institucion(es)");
+		try {
+			$_output = $objeto->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+	public function obligacion()
+	{
+		$objeto = new ObligacionTributariaCRUD("Obligacion Tributaria");
+		try {
+			$_output = $objeto->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+	public function sociedad()
+	{
+		$objeto = new SociedadCRUD("Sociedad");
+		try {
+			$_output = $objeto->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+
+
 	public function regimen()
 	{
 		$objeto = new RegimenCRUD("Regimen");
