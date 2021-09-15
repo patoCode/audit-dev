@@ -5,14 +5,14 @@ class ActividadCRUD
 {
 	private $crud;
 
-	private $showColumns   = ['ACTIVIDAD','CODIGO','MES_CIERRE','ACTIVIDAD_ECONOMICA','CODIGO_SIN','ESTADO'];
+	private $showColumns   = ['CODIGO','ACTIVIDAD','MES_CIERRE','ACTIVIDAD_ECONOMICA','CODIGO_SIN','ESTADO'];
 
-	private $createColumns = ['ACTIVIDAD','CODIGO','MES_CIERRE','ACTIVIDAD_ECONOMICA','CODIGO_SIN','USER_REG','FECHA_REG'];
+	private $createColumns = ['CODIGO','ACTIVIDAD','MES_CIERRE','ACTIVIDAD_ECONOMICA','USER_REG','FECHA_REG'];
 
-	private $editColumns   = ['ACTIVIDAD','CODIGO','MES_CIERRE','ACTIVIDAD_ECONOMICA','CODIGO_SIN','ESTADO','USER_MOD', 'FECHA_MOD'];
+	private $editColumns   = ['CODIGO','ACTIVIDAD','MES_CIERRE','ACTIVIDAD_ECONOMICA','ESTADO','USER_MOD', 'FECHA_MOD'];
 	private $labels        = array(
-								'ACTIVIDAD'           => 'Actividad',
-								'CODIGO'              => 'Código',
+								'ACTIVIDAD'           => 'Nombre',
+								'CODIGO'              => 'Código Act.',
 								'MES_CIERRE'          => 'Mes Cierre',
 								'ACTIVIDAD_ECONOMICA' => 'Act. Económica',
 								'CODIGO_SIN'          => 'Código SIN',
@@ -25,6 +25,7 @@ class ActividadCRUD
 	private $actionIcon  = "";
 	private $username;
 
+
 	function __construct($subject, $showDeleteRows = true, $softDelete = true)
 	{
 		$this->crud = new BaseCrud($subject,$this->table,$this->idField, $showDeleteRows, $softDelete);
@@ -33,6 +34,8 @@ class ActividadCRUD
 		$this->crud->setEditFields($this->editColumns);
 		$this->crud->setColumns($this->showColumns);
 		$this->crud->setAuditFields("user");
+
+		$this->crud->mesSelect('MES_CIERRE');
 		$this->crud->setDisplayFields($this->labels);
 	}
 	public function setActionStyle($label = "", $icon = "")

@@ -4,13 +4,15 @@ require_once APPPATH.'controllers/administration/BaseCrud.php';
 class CertificadoCRUD
 {
 	private $crud;
-	private $showColumns   = ['CERTIFICADO','ESTADO'];
-	private $createColumns = ['CERTIFICADO','ESTADO','USER_REG','FECHA_REG'];
-	private $editColumns   = ['CERTIFICADO','ESTADO','USER_MOD', 'FECHA_MOD'];
+	private $showColumns   = ['CERTIFICADO','CODIGO','ID_INSTITUCION','ESTADO'];
+	private $createColumns = ['CERTIFICADO','CODIGO','ID_INSTITUCION','USER_REG','FECHA_REG'];
+	private $editColumns   = ['CERTIFICADO','CODIGO','ID_INSTITUCION','ESTADO','USER_MOD', 'FECHA_MOD'];
 
 	private $labels    = array(
-							"CERTIFICADO" =>"Certificado",
-							"ESTADO"      =>"Estado",
+							"CERTIFICADO"    =>"Certificado",
+							"ESTADO"         =>"Estado",
+							'CODIGO'         => 'Código',
+							'ID_INSTITUCION' => 'Institución'
 						);
 
 	private $table         = 'aud_certificados';
@@ -27,7 +29,8 @@ class CertificadoCRUD
 		$this->crud->setEditFields($this->editColumns);
 		$this->crud->setColumns($this->showColumns);
 
-		$this->crud->setAuditFields("#DEINS");
+		$this->crud->setAuditFields("#DENIS");
+		$this->crud->getInstitucionSelect();
 		$this->crud->setDisplayFields($this->labels);
 	}
 

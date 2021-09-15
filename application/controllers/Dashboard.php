@@ -1,11 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /*IMPORT CLASS CRUD */
+require_once APPPATH.'controllers/administration/ClienteCRUD.php';
+require_once APPPATH.'controllers/administration/SociedadCRUD.php';
+require_once APPPATH.'controllers/administration/RegimenCRUD.php';
+
 require_once APPPATH.'controllers/administration/ActividadCRUD.php';
 require_once APPPATH.'controllers/administration/PeriodoCRUD.php';
 require_once APPPATH.'controllers/administration/CertificadoCRUD.php';
 require_once APPPATH.'controllers/administration/PaisCRUD.php';
 require_once APPPATH.'controllers/administration/CiudadCRUD.php';
+require_once APPPATH.'controllers/administration/ObligacionTributariaCRUD.php';
+require_once APPPATH.'controllers/administration/InstitucionCRUD.php';
+
+
 
 class Dashboard extends CI_Controller {
 
@@ -15,7 +23,150 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->model('');
 	}
+	public function institucion()
+	{
+		$objeto = new InstitucionCRUD("Institucion(es)");
+		try {
+			$_output = $objeto->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+	public function obligacion()
+	{
+		$objeto = new ObligacionTributariaCRUD("Obligacion Tributaria");
+		try {
+			$_output = $objeto->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+	public function sociedad()
+	{
+		$objeto = new SociedadCRUD("Sociedad");
+		try {
+			$_output = $objeto->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
 
+	public function cliente()
+	{
+		try{
+			$crud = new grocery_CRUD();
+			$crud->set_table('aud_cliente');
+			$crud->set_subject('Cliente');
+
+			$crud->columns('NIT',
+				'RAZON_SOCIAL',
+				'PROPIETARIO_REP_LEGAL',
+				'CELULAR_REP_LEGAL',
+				'CI',
+				'EXPEDIDO_EN',
+				'ID_SOCIEDAD',
+				'REGIMEN',
+				'ID_CIUDAD',
+				'ZONA',
+				'DIRECCION_BASE',
+				'TELEFONO_DOM',
+				'CODIGO_CLIENTE',
+				'CONTACTO',
+				'EMAIL',);
+
+			$crud->add_fields('NIT',
+				'RAZON_SOCIAL',
+				'PROPIETARIO_REP_LEGAL',
+				'CELULAR_REP_LEGAL',
+				'CI',
+				'EXPEDIDO_EN',
+				'ID_SOCIEDAD',
+				'REGIMEN',
+				'ID_CIUDAD',
+				'ZONA',
+				'DIRECCION_BASE',
+				'TELEFONO_DOM',
+				'CODIGO_CLIENTE',
+				'CONTACTO',
+				'EMAIL',);
+			$crud->edit_fields('NIT',
+				'RAZON_SOCIAL',
+				'PROPIETARIO_REP_LEGAL',
+				'CELULAR_REP_LEGAL',
+				'CI',
+				'EXPEDIDO_EN',
+				'ID_SOCIEDAD',
+				'REGIMEN',
+				'ID_CIUDAD',
+				'ZONA',
+				'DIRECCION_BASE',
+				'TELEFONO_DOM',
+				'CODIGO_CLIENTE',
+				'CONTACTO',
+				'EMAIL','ESTADO','USER_MOD', 'FECHA_MOD');
+			$crud->required_fields(
+				'NIT',
+				'RAZON_SOCIAL',
+				'PROPIETARIO_REP_LEGAL',
+				'CI',
+				'EXPEDIDO_EN',
+				'ID_SOCIEDAD',
+				'REGIMEN',
+				'ID_CIUDAD',
+				'ZONA',
+				'DIRECCION_BASE',
+				'TELEFONO_DOM',
+				'CONTACTO'
+			);
+			$username = "DENIS";
+			$now            = date("Y-m-d H:i:s");
+			$crud->field_type('USER_REG', 'hidden', $username);
+			$crud->field_type('FECHA_REG', 'hidden', $now);
+			$crud->field_type('USER_MOD', 'hidden', $username);
+			$crud->field_type('FECHA_MOD', 'hidden', $now);
+			$crud->field_type('ESTADO','dropdown',
+            array('activo' => 'Activo', 'inactivo' => 'Inactivo'));
+
+			$crud->display_as('NIT', 'NIT')
+				->display_as('RAZON_SOCIAL', 'Nombre/Razon')
+				->display_as('PROPIETARIO_REP_LEGAL', 'Propietario/Rep.Legal')
+				->display_as('CI', 'Carnet de Identidad')
+				->display_as('EXPEDIDO_EN', 'Exp.')
+				->display_as('ID_SOCIEDAD', 'Tipo Sociedad')
+				->display_as('REGIMEN', 'Regimen Impositivo')
+				->display_as('EMAIL', 'Correo Electronico')
+				->display_as('Contacto', 'Contacto')
+				->display_as('ID_CIUDAD', 'Ciudad');
+
+			$crud->set_relation('EXPEDIDO_EN','aud_ciudad','CODIGO_CIUDAD', array('aud_ciudad.ESTADO' => 'activo','aud_ciudad.ESTADO_REG' => 'vigente'));
+
+			$crud->set_relation('ID_SOCIEDAD','aud_sociedad','SOCIEDAD', array('aud_sociedad.ESTADO' => 'activo','aud_sociedad.ESTADO_REG' => 'vigente'));
+
+			$crud->set_relation('ID_CIUDAD','aud_ciudad','CIUDAD', array('aud_ciudad.ESTADO' => 'activo','aud_ciudad.ESTADO_REG' => 'vigente'));
+
+			$crud->set_relation_n_n('REGIMEN', 'aud_cliente_regimen', 'aud_regimen', 'ID_CLIENTE', 'ID_REGIMEN', 'REGIMEN');
+
+
+			$output = $crud->render();
+			$this->_render_view($output);
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+
+	}
+	public function regimen()
+	{
+		$objeto = new RegimenCRUD("Regimen");
+		try {
+			$_output = $objeto->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
 	public function actividad()
 	{
 		$actividad = new ActividadCRUD("Actividad(es)");
@@ -56,7 +207,7 @@ class Dashboard extends CI_Controller {
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
-	public function cuidad()
+	public function ciudad()
 	{
 		$object = new CiudadCRUD("Cuidad(es)");
 		try {
@@ -66,155 +217,7 @@ class Dashboard extends CI_Controller {
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
-	public function home()
-	{
-		redirect('Dashboard/company','refresh');
-	}
-	/**
-	 * @return [type]
-	 */
-	public function company()
-	{
-		$company = new CompanyCRUD("Empresa",true);
-		try {
-			$company->setActionStyle("Direcciones");
-			$_output = $company->getCRUD();
 
-			$this->_render_view($_output);
-
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	/**
-	 * @param  [type]
-	 * @return [type]
-	 */
-	public function location($id)
-	{
-		$location = new LocationCRUD("Configuración",false, true, $id);
-		try {
-
-			$_output = $location->getCRUD();
-			$this->_render_view($_output);
-
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	/**
-	 * @return [type]
-	 */
-	public function site()
-	{
-		$site = new SiteCRUD("Sitio",false);
-		try {
-			$site->setActionStyle("[+] CONFIG");
-			$_output = $site->getCRUD();
-			$this->_render_view($_output);
-
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	/**
-	 * @param  [type]
-	 * @return [type]
-	 */
-	public function configuration($id)
-	{
-		$configuration = new ConfigurationCRUD("Direcciones",false, true, $id);
-		try {
-			$_output = $configuration->getCRUD();
-			$this->_render_view($_output);
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	/**
-	 * @return [type]
-	 */
-	public function category()
-	{
-		$category = new CategoryCRUD("Categorias",false, true);
-		try {
-
-			$_output = $category->getCRUD();
-			$this->_render_view($_output);
-
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	/**
-	 * @return [type]
-	 */
-	public function page()
-	{
-		$page = new PageCRUD("Paginas",false, true);
-		try {
-
-			$_output = $page->getCRUD();
-			$this->_render_view($_output);
-
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	/**
-	 * @return [type]
-	 */
-	public function group()
-	{
-		$group = new GroupCRUD("Grupos",false, true);
-		try {
-			$_output = $group->getCRUD();
-			$this->_render_view($_output);
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	public function rols()
-	{
-		$rol = new RolCRUD("Roles",false, true);
-		try {
-			$_output = $rol->getCRUD();
-			$this->_render_view($_output);
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	public function actions()
-	{
-		$action = new ActionCRUD("Acciones",false, true);
-		try {
-			$_output = $action->getCRUD();
-			$this->_render_view($_output);
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-
-	public function user()
-	{
-		$user = new UserCRUD("Usuarios",false, true);
-		try {
-			$_output = $user->getCRUD();
-			$this->_render_view($_output);
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-	public function people()
-	{
-		$people = new PeopleCRUD("Personas",false, true);
-		try {
-			$_output = $people->getCRUD();
-			$this->_render_view($_output);
-		} catch (Exception $e) {
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
 	/**
 	 * @param  [type]
 	 * @param  [type]
@@ -222,11 +225,14 @@ class Dashboard extends CI_Controller {
 	 */
 	private function _render_view($output = null, $view = null)
 	{
-		if($view == null){
-			$this->load->view($this->admin_template_route,(array)$output);
-		}else{
-			$data['view'] = $view;
-			$this->load->view($this->admin_template_route,$data);
-		}
+		$this->load->view('Administration/bodyCRUD',(array)$output);
+
+
+		// if($view == null){
+		// 	$this->load->view($this->admin_template_route,(array)$output);
+		// }else{
+		// 	$data['view'] = $view;
+		// 	$this->load->view($this->admin_template_route,$data);
+		// }
 	}
 }

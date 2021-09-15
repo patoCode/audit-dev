@@ -2220,6 +2220,8 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 	protected function load_js_chosen()
 	{
 		$this->set_css($this->default_css_path.'/jquery_plugins/chosen/chosen.css');
+		$this->set_css($this->default_css_path.'/jquery_plugins/chosen/chosen.theme.css');
+
 		$this->set_js_lib($this->default_javascript_path.'/jquery_plugins/jquery.chosen.min.js');
 	}
 
@@ -2332,7 +2334,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		$extra_attributes = '';
 		if(!empty($field_info->db_max_length))
 			$extra_attributes .= "maxlength='{$field_info->db_max_length}'";
-		$input = "<input id='field-{$field_info->name}' name='{$field_info->name}' type='text' value='$value' class='numeric form-control' $extra_attributes />";
+		$input = "<input id='field-{$field_info->name}' name='{$field_info->name}' type='text' value='$value' class='numeric form-control col-8' $extra_attributes />";
 		return $input;
 	}
 
@@ -2380,7 +2382,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
             }
 
         }
-		$input = "<input id='field-{$field_info->name}' class='form-control' name='{$field_info->name}' type='text' value=\"$value\" $extra_attributes />";
+		$input = "<input id='field-{$field_info->name}' class='form-control col-8' name='{$field_info->name}' type='text' value=\"$value\" $extra_attributes />";
 		return $input;
 	}
 
@@ -2412,7 +2414,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 
 			$class_name = $this->config->text_editor_type == 'minimal' ? 'mini-texteditor' : 'texteditor';
 
-			$input = "<textarea id='field-{$field_info->name}' name='{$field_info->name}' class='$class_name' >$value</textarea>";
+			$input = "<textarea id='field-{$field_info->name}' name='{$field_info->name}' class='$class_name form-control col-8' >$value</textarea>";
 		}
 		else
 		{
@@ -2459,7 +2461,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		{
 			$datetime = '';
 		}
-		$input = "<input id='field-{$field_info->name}' name='{$field_info->name}' type='text' value='$datetime' maxlength='19' class='datetime-input form-control' />
+		$input = "<input id='field-{$field_info->name}' name='{$field_info->name}' type='text' value='$datetime' maxlength='19' class='datetime-input form-control col-8' />
 		<a class='datetime-input-clear' tabindex='-1'>".$this->l('form_button_clear')."</a>
 		({$this->ui_date_format}) hh:mm:ss";
 		return $input;
@@ -2514,7 +2516,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 			$date = '';
 		}
 
-		$input = "<input id='field-{$field_info->name}' name='{$field_info->name}' type='text' value='$date' maxlength='10' class='datepicker-input form-control' />
+		$input = "<input id='field-{$field_info->name}' name='{$field_info->name}' type='text' value='$date' maxlength='10' class='datepicker-input form-control col-8' />
 		<a class='datepicker-input-clear' tabindex='-1'>".$this->l('form_button_clear')."</a> (".$this->ui_date_format.")";
 		return $input;
 	}
@@ -2526,7 +2528,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 
 		$select_title = str_replace('{field_display_as}',$field_info->display_as,$this->l('set_relation_title'));
 
-		$input = "<select id='field-{$field_info->name}' name='{$field_info->name}' class='chosen-select' data-placeholder='".$select_title."'>";
+		$input = "<select id='field-{$field_info->name}' name='{$field_info->name}' class='chosen-select col-8 form-control' data-placeholder='".$select_title."'>";
 		$options = array('' => '') + $field_info->extras;
 		foreach($options as $option_value => $option_label)
 		{
@@ -2545,7 +2547,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 
 		$select_title = str_replace('{field_display_as}',$field_info->display_as,$this->l('set_relation_title'));
 
-		$input = "<select id='field-{$field_info->name}' name='{$field_info->name}' class='chosen-select' data-placeholder='".$select_title."'>";
+		$input = "<select id='field-{$field_info->name}' name='{$field_info->name}' class='chosen-select col-3 p-2' data-placeholder='".$select_title."'>";
 		$options_array = $field_info->extras !== false && is_array($field_info->extras)? $field_info->extras : explode("','",substr($field_info->db_max_length,1,-1));
 		$options_array = array('' => '') + $options_array;
 
@@ -3608,7 +3610,7 @@ class Grocery_CRUD extends grocery_CRUD_States
 	 */
 	const	VERSION = "1.6.4";
 
-	const	JQUERY 			= "jquery-2.2.4.min.js";
+	const	JQUERY 			= "jquery-1.11.1.min.js";
 	const	JQUERY_UI_JS 	= "jquery-ui-1.10.3.custom.min.js";
 	const	JQUERY_UI_CSS 	= "jquery-ui-1.10.1.custom.min.css";
 

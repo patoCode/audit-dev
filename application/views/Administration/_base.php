@@ -5,19 +5,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title><?php echo SIST_NAME; ?></title>
-
+	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/feather/feather.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/ti-icons/css/themify-icons.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/css/vendor.bundle.base.css">
-	<!-- endinject -->
-	<!-- Plugin css for this page -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/ti-icons/css/themify-icons.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/public/assets/theme-v1/js/select.dataTables.min.css">
-	<!-- End plugin css for this page -->
-	<!-- inject:css -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/css/vertical-layout-light/style.css">
-	<!-- endinject -->
 	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/assets/theme-v1/images/favicon.png" />
 
 	<!-- GC -->
@@ -75,38 +70,32 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-	<script type="text/javascript" src="<?php echo base_url(); ?>public/assets/js/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url(); ?>public/assets/js/jquery-ui/jquery-ui.min.js "></script>
 
 	<!-- GC JS -->
 	<?php if(isset($js_files)): ?>
 		<?php foreach($js_files as $file): ?>
 		    <script src="<?php echo $file; ?>"></script>
 		<?php endforeach; ?>
+	<?php else: ?>
+		<script type="text/javascript" src="<?php echo base_url(); ?>public/assets/js/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo base_url(); ?>public/assets/js/jquery-ui/jquery-ui.min.js "></script>
 	<?php endif; ?>
 	<!-- END GC JS -->
 
-	<!-- plugins:js -->
+
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/js/vendor.bundle.base.js"></script>
-	<!-- endinject -->
-	<!-- Plugin js for this page -->
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/chart.js/Chart.min.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/datatables.net/jquery.dataTables.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/dataTables.select.min.js"></script>
-
-	<!-- End plugin js for this page -->
-	<!-- inject:js -->
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/off-canvas.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/hoverable-collapse.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/template.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/settings.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/todolist.js"></script>
-	<!-- endinject -->
-	<!-- Custom js for this page-->
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/dashboard.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/Chart.roundedBarCharts.js"></script>
-	<!-- End custom js for this page-->
+
 </body>
 
 </html>

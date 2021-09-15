@@ -9,11 +9,25 @@ class BaseCrud
 	private $editColumns   = [];
 	private $labels        = [];
 	private $username;
+	private $meses = array(
+						'1'  => 'ENERO',
+						'2'  => 'FEBRERO',
+						'3'  => 'MARZO',
+						'4'  => 'ABRIL',
+						'5'  => 'MAYO',
+						'6'  => 'JUNIO',
+						'7'  => 'JULIO',
+						'8'  => 'AGOSTO',
+						'9'  => 'SEPTIEMBRE',
+						'10' => 'OCTUBRE',
+						'11' => 'NOVIEMBRE',
+						'12' => 'DICIEMBRE'
+					);
 
-	function __construct($subject = "Sin Titulo", $table = "", $idField = "", $showDeleteRows = true, $softDelete = true){
+	function __construct($subject = "Sin Titulo", $table = "", $idField = "", $showDeleteRows = true, $softDelete = true, $columnState = 'ESTADO'){
 
 		$this->crud    = new grocery_CRUD();
-		$this->crud->unset_jquery();
+		//$this->crud->unset_jquery();
 		$this->crud->unset_export();
 		$this->crud->unset_print();
 		$this->crud->set_subject($subject);
@@ -23,6 +37,13 @@ class BaseCrud
 
 		if($softDelete)
 			$this->crud->callback_delete(array($this,'_delete'));
+
+		$this->crud->field_type($columnState,'dropdown',
+            array('activo' => 'Activo', 'inactivo' => 'Inactivo'));
+	}
+	public function mesSelect($field)
+	{
+ 		$this->crud->field_type($field,'dropdown',$this->meses);
 	}
 	public function setAuditFields($username)
 	{
@@ -77,10 +98,23 @@ class BaseCrud
 		$this->crud->display_as("actions", "Acciones");
 	}
 
-	public function getPaisSelect($show = 'pais')
+	public function getPaisSelect($show = 'PAIS')
 	{
 		$this->crud->set_relation('ID_PAIS','aud_pais',$show, array('aud_pais.ESTADO' => 'activo','aud_pais.ESTADO_REG' => 'vigente'));
 	}
+	public function getSociedadSelect($show = 'SOCIEDAD')
+	{
+		$this->crud->set_relation('ID_SOCIEDAD','aud_sociedad',$show, array('aud_sociedad.ESTADO' => 'activo','aud_sociedad.ESTADO_REG' => 'vigente'));
+	}
+	public function getPeriodoSelect($show = 'PERIODO')
+	{
+		$this->crud->set_relation('ID_PERIODO','aud_periodo',$show, array('aud_periodo.ESTADO' => 'activo','aud_periodo.ESTADO_REG' => 'vigente'));
+	}
+	public function getInstitucionSelect($show = 'INSTITUCION')
+	{
+		$this->crud->set_relation('ID_INSTITUCION','aud_institucion',$show, array('aud_institucion.ESTADO' => 'activo','aud_institucion.ESTADO_REG' => 'vigente'));
+	}
+
 
 	public function addAction($label = "Default Text", $route = "", $icon= "",$showText = false){
 		$icon = $icon!=""?$icon:'icon-cog';
@@ -115,9 +149,9 @@ class BaseCrud
 	{
 		$this->crud->field_type($name, 'hidden', $value);
 	}
-	public function setRelationN_toN($fieldname, $tableRelation, $otherTable, $idRelation, $idFinalTable, $nameField)
+	public function setRelationN_toN($fieldname, $tableRelation, $otherTable, $idRelation, $idFinalTable, $nameField,$aux)
 	{
-		$this->crud->set_relation_n_n($fieldname, $tableRelation, $otherTable, $idRelation, $idFinalTable, $nameField);
+		$this->crud->set_relation_n_n($fieldname, $tableRelation, $otherTable, $idRelation, $idFinalTable, $nameField, $aux);
 	}
 	public function setSimpleRelation()
 	{
