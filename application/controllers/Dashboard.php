@@ -116,14 +116,11 @@ class Dashboard extends CI_Controller {
 			$crud->set_relation('ID_CIUDAD','aud_ciudad','CIUDAD', array('aud_ciudad.ESTADO' => 'activo','aud_ciudad.ESTADO_REG' => 'vigente'));
 
 			$crud->set_relation_n_n('REGIMEN', 'aud_cliente_regimen', 'aud_regimen', 'ID_CLIENTE', 'ID_REGIMEN', 'REGIMEN');
-
-
 			$output = $crud->render();
 			$this->_render_view($output);
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
-
 	}
 	public function empresa()
 	{
@@ -235,14 +232,14 @@ class Dashboard extends CI_Controller {
 	 */
 	private function _render_view($output = null, $view = null)
 	{
-		$this->load->view('Administration/bodyCRUD',(array)$output);
+		//$this->load->view('Administration/bodyCRUD',(array)$output);
 
 
-		// if($view == null){
-		// 	$this->load->view($this->admin_template_route,(array)$output);
-		// }else{
-		// 	$data['view'] = $view;
-		// 	$this->load->view($this->admin_template_route,$data);
-		// }
+		if($view == null){
+			$this->load->view($this->admin_template_route,(array)$output);
+		}else{
+			$data['view'] = $view;
+			$this->load->view($this->admin_template_route,$data);
+		}
 	}
 }

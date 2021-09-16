@@ -25,11 +25,12 @@ class BaseCrud
 					);
 
 	function __construct($subject = "Sin Titulo", $table = "", $idField = "", $showDeleteRows = true, $softDelete = true, $columnState = 'ESTADO'){
-
+		$this->idField = $idField;
+		$this->table = $table;
 		$this->crud    = new grocery_CRUD();
-		//$this->crud->unset_jquery();
-		$this->crud->unset_export();
-		$this->crud->unset_print();
+		$this->crud->unset_jquery();
+		// $this->crud->unset_export();
+		// $this->crud->unset_print();
 		$this->crud->set_subject($subject);
 		$this->crud->set_table($table);
 		if(!$showDeleteRows)
@@ -81,6 +82,7 @@ class BaseCrud
 	}
 	public function _delete($primary_key)
 	{
+		echo "campp: ".$this->idField;
 		$ci = & get_instance();
 		$ci->load->model('Master_model','master');
 		$ci->master->delete($primary_key, $this->table, $this->idField, $this->username);
@@ -114,8 +116,10 @@ class BaseCrud
 	{
 		$this->crud->set_relation('ID_INSTITUCION','aud_institucion',$show, array('aud_institucion.ESTADO' => 'activo','aud_institucion.ESTADO_REG' => 'vigente'));
 	}
-
-
+	public function getCiudadSelect($show ="CIUDAD")
+	{
+		$this->crud->set_relation('EXPEDIDO_EN','aud_ciudad',$show, array('aud_ciudad.ESTADO' => 'activo','aud_ciudad.ESTADO_REG' => 'vigente'));
+	}
 	public function addAction($label = "Default Text", $route = "", $icon= "",$showText = false){
 		$icon = $icon!=""?$icon:'icon-cog';
 		if($showText)

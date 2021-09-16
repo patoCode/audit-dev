@@ -1,0 +1,30 @@
+.btn-rounded.btn-icon{
+	line-height: 45px;
+}
+.small-loading
+{
+	background: url('images/load.gif') no-repeat;
+	display: none;
+}.report-div
+{
+
+	display:none;
+
+}
+.report-div.success p
+{
+	background: url(images/success.png) no-repeat left center;
+	margin: 0px !important;
+	padding: 10px 0px 10px 25px !important;
+}
+
+.report-div.error p
+{
+	background: url(images/error.png) no-repeat left center;
+	margin: 0px !important;
+	padding: 10px 0px 10px 25px !important;
+}
+input.field_error
+{
+	border: 1px solid red !important;
+}

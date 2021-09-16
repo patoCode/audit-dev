@@ -5,23 +5,28 @@ class EmpresaCRUD
 {
 	private $crud;
 	private $showColumns   = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT'];
-	private $createColumns = ['CIUDAD','BANDERA','CODIGO_CIUDAD','ID_PAIS','USER_REG','FECHA_REG'];
-	private $editColumns   = ['CIUDAD','BANDERA','CODIGO_CIUDAD','ID_PAIS','ESTADO','USER_MOD', 'FECHA_MOD'];
+	private $createColumns = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT','USER_REG','FECHA_REG'];
+	private $editColumns   = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT','ESTADO','USER_MOD', 'FECHA_MOD'];
 
 	private $labels    = array(
-							"CIUDAD"        =>"Ciudad",
-							"CODIGO_CIUDAD" =>"Codigo",
-							"BANDERA"       => "Icono",
-							"ESTADO"        =>"Estado",
-							"ID_PAIS"		=> 'Pais'
+							'NOMBRE' =>'Nombre',
+							'SIGLA' =>'Sigla',
+							'TELEFONO_FIJO' =>'Telf. Fijo',
+							'TELEFONO_CEL' =>'Telf.Celular',
+							'PAGINA_WEB' =>'Web',
+							'EMAIL' =>'Email',
+							'RESPONSABLE' =>'Responsable',
+							'CI' =>'C.I.',
+							'EXPEDIDO_EN' =>'Exp.',
+							'NIT' =>'NIT'
 						);
 
-	private $table         = 'aud_ciudad';
-	private $idField       = "ID_CIUDAD";
+	private $table         = 'aud_empresa';
+	private $idField       = "ID_EMPRESA";
 	private $subject;
 	private $username;
 
-	function __construct($subject, $showDeleteRows = true, $softDelete = true, $id = 0)
+	function __construct($subject, $showDeleteRows = false, $softDelete = true, $id = 0)
 	{
 		$this->crud = new BaseCrud($subject,$this->table,$this->idField, $showDeleteRows, $softDelete);
 
@@ -31,7 +36,7 @@ class EmpresaCRUD
 		$this->crud->setColumns($this->showColumns);
 		$this->crud->setAuditFields("#DEINS");
 		$this->crud->setDisplayFields($this->labels);
-		$this->crud->getPaisSelect();
+		$this->crud->getCiudadSelect();
 	}
 
 	/*===========================================================================*/

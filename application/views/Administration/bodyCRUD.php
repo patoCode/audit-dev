@@ -1,14 +1,4 @@
-    <!-- GC -->
-    <?php foreach($css_files as $file): ?>
-        <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
-    <?php endforeach; ?>
-    <!-- END GC -->
-
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
-
+<!--
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -38,6 +28,8 @@
             <li><a class="dropdown-item" href="<?php echo base_url() ?>Dashboard/ciudad">REGISTRO DE CIUDAD</a></li>
             <li><a class="dropdown-item" href="<?php echo base_url() ?>Dashboard/obligacion">REGISTRO DE OBLIGACIONES</a></li>
             <li><a class="dropdown-item" href="<?php echo base_url() ?>Dashboard/institucion">REGISTRO DE INSTITUCIONES</a></li>
+            <li><a class="dropdown-item" href="<?php echo base_url() ?>Dashboard/empresa">EMPRESA</a></li>
+
           </ul>
         </li>
         <li class="nav-item">
@@ -50,19 +42,7 @@
       </form>
     </div>
   </div>
-</nav>
+</nav> -->
     <!-- <table class="table table-hover"> -->
         <?php echo $output; ?>
     <!-- </table> -->
-
-    <!-- GC JS -->
-    <?php if(isset($js_files)): ?>
-        <?php foreach($js_files as $file): ?>
-            <script src="<?php echo $file; ?>"></script>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/assets/js/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>public/assets/js/jquery-ui/jquery-ui.min.js "></script>
-    <?php endif; ?>
-    <!-- END GC JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
