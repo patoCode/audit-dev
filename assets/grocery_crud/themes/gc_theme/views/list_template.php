@@ -33,8 +33,8 @@
 	var message_alert_delete = "<?php echo $this->l('alert_delete'); ?>";
 
 </script>
-<div id='list-report-error' class='report-div error card card-light-danger'></div>
-<div id='list-report-success' class='report-div success report-list card card-tale' <?php if($success_message !== null){?>style="display:block"<?php }?>><?php
+<div id='list-report-error' class='report-div error card card-light-danger mb-3'></div>
+<div id='list-report-success' class='report-div success report-list card card-tale mb-3' <?php if($success_message !== null){?>style="display:block"<?php }?>><?php
 if($success_message !== null){?>
 	<p><?php echo $success_message; ?></p>
 <?php }
@@ -104,7 +104,7 @@ if($success_message !== null){?>
 					<input type='hidden' name='order_by[0]' id='hidden-sorting' class='hidden-sorting' value='<?php if(!empty($order_by[0])){?><?php echo $order_by[0]?><?php }?>' />
 					<input type='hidden' name='order_by[1]' id='hidden-ordering' class='hidden-ordering'  value='<?php if(!empty($order_by[1])){?><?php echo $order_by[1]?><?php }?>'/>
 				</div>
-				<div class="btn-group">
+				<div class="btn-group text-right d-block">
 					<button class="pFirst pButton first-button btn btn-primary">
 						<i class="ti-angle-double-left"></i>
 					</button>
@@ -112,9 +112,13 @@ if($success_message !== null){?>
 						<i class="ti-angle-left"></i>
 					</button>
 
-					<span class="pcontrol"><?php echo $this->l('list_page'); ?> <input name='page' type="text" value="1" size="4" id='crud_page' class="crud_page">
-				<?php echo $this->l('list_paging_of'); ?>
-				<span id='last-page-number' class="last-page-number"><?php echo ceil($total_results / $default_per_page)?></span></span>
+					<span class="pcontrol"><?php echo $this->l('list_page'); ?>
+						<input name='page' type="text" value="1" size="4" id='crud_page' class="crud_page form-control-sm border-1">
+						<?php echo $this->l('list_paging_of'); ?>
+						<span id='last-page-number' class="last-page-number">
+							<?php echo ceil($total_results / $default_per_page)?>
+						</span>
+					</span>
 					<button class="pNext pButton next-button btn btn-primary" >
 						<i class="ti-angle-right"></i>
 					</button>

@@ -29,8 +29,8 @@ class BaseCrud
 		$this->table = $table;
 		$this->crud    = new grocery_CRUD();
 		$this->crud->unset_jquery();
-		// $this->crud->unset_export();
-		// $this->crud->unset_print();
+		$this->crud->unset_export();
+		$this->crud->unset_print();
 		$this->crud->set_subject($subject);
 		$this->crud->set_table($table);
 		if(!$showDeleteRows)
@@ -41,6 +41,9 @@ class BaseCrud
 
 		$this->crud->field_type($columnState,'dropdown',
             array('activo' => 'Activo', 'inactivo' => 'Inactivo'));
+	}
+	public function getPrivilegios(){
+		$this->crud->set_relation_n_n('ACCESOS', 'aud_privilegio_rol', 'aud_privilegio', 'ID_ROL', 'ID_PRIVILEGIO', 'PRIVILEGIO');
 	}
 	public function mesSelect($field)
 	{
@@ -119,6 +122,10 @@ class BaseCrud
 	public function getCiudadSelect($show ="CIUDAD")
 	{
 		$this->crud->set_relation('EXPEDIDO_EN','aud_ciudad',$show, array('aud_ciudad.ESTADO' => 'activo','aud_ciudad.ESTADO_REG' => 'vigente'));
+	}
+	public function getMenuSelect($show = 'MENU')
+	{
+		$this->crud->set_relation('ID_MENU','aud_menu',$show, array('aud_menu.ESTADO' => 'activo','aud_menu.ESTADO_REG' => 'vigente'));
 	}
 	public function addAction($label = "Default Text", $route = "", $icon= "",$showText = false){
 		$icon = $icon!=""?$icon:'icon-cog';

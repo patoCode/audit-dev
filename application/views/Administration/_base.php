@@ -13,8 +13,13 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/ti-icons/css/themify-icons.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/public/assets/theme-v1/js/select.dataTables.min.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/css/vertical-layout-light/style.css">
-	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/assets/theme-v1/images/favicon.png" />
+	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/imgs/mini-logo.png" />
+	<style>
+		.nav-link{
+		  text-transform:  capitalize!important;
+		}
 
+	</style>
 	<!-- GC -->
 	<?php if(isset($css_files)): ?>
 		<?php foreach($css_files as $file): ?>
@@ -51,18 +56,21 @@
 				if(isset($output)):
 				    $this->load->view('administration/bodyCRUD', $output);
 				else:
-				    $this->load->view('Administration/'.$view);
+						if(isset($view))
+				    	$this->load->view('Administration/'.$view);
+				    else
+				    	$this->load->view('Administration/default');
 			    endif;
 		    ?>
           </div>
 
 
-        <footer class="footer fixed-bottom">
+       <!--  <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  DoIO.se <br> <a href="#" target="_blank">Audit</a> Software handycraft by DoIO</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
-        </footer>
+        </footer> -->
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

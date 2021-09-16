@@ -13,6 +13,12 @@ require_once APPPATH.'controllers/administration/CiudadCRUD.php';
 require_once APPPATH.'controllers/administration/ObligacionTributariaCRUD.php';
 require_once APPPATH.'controllers/administration/InstitucionCRUD.php';
 require_once APPPATH.'controllers/administration/EmpresaCRUD.php';
+// SECURITY
+require_once APPPATH.'controllers/administration/UsuarioCRUD.php';
+require_once APPPATH.'controllers/administration/RolCRUD.php';
+require_once APPPATH.'controllers/administration/PrivilegioCRUD.php';
+
+
 
 class Dashboard extends CI_Controller {
 
@@ -21,6 +27,10 @@ class Dashboard extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('');
+	}
+	public function index()
+	{
+		$this->load->view($this->admin_template_route);
 	}
 	public function cliente()
 	{
@@ -122,6 +132,16 @@ class Dashboard extends CI_Controller {
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
+	public function usuario()
+	{
+	 	$objeto = new UsuarioCRUD("Usuario(s)");
+		try {
+			$_output = $objeto->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
 	public function empresa()
 	{
 	 	$objeto = new EmpresaCRUD("Empresa(s)");
@@ -162,8 +182,6 @@ class Dashboard extends CI_Controller {
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
-
-
 	public function regimen()
 	{
 		$objeto = new RegimenCRUD("Regimen");
@@ -217,6 +235,26 @@ class Dashboard extends CI_Controller {
 	public function ciudad()
 	{
 		$object = new CiudadCRUD("Cuidad(es)");
+		try {
+			$_output = $object->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+	public function rol()
+	{
+	    $object = new RolCRUD("Rol(es)");
+		try {
+			$_output = $object->getCRUD();
+			$this->_render_view($_output);
+		} catch (Exception $e) {
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
+	}
+	public function privilegio()
+	{
+		$object = new PrivilegioCRUD("Privilegio(s)");
 		try {
 			$_output = $object->getCRUD();
 			$this->_render_view($_output);

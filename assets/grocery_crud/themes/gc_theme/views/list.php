@@ -2,8 +2,8 @@
 	$column_width = (int)(80/count($columns));
 	if(!empty($list)){
 ?>
-		<table class="table table-striped table-hover" id="flex1">
-		<thead>
+		<table class="table table-bordered table-hover" id="flex1">
+		<thead class="thead-dark">
 			<tr>
 				<?php foreach($columns as $column){?>
 				<th width='<?php echo $column_width?>%'>
