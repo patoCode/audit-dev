@@ -25,11 +25,6 @@
 		<tbody>
 		<?php foreach($list as $num_row => $row){ ?>
 		<tr  <?php if($num_row % 2 == 1){?>class="erow"<?php }?>>
-			<?php foreach($columns as $column){?>
-			<td width='<?php echo $column_width?>%' class='<?php if(isset($order_by[0]) &&  $column->field_name == $order_by[0]){?>sorted<?php }?>'>
-				<?php echo $row->{$column->field_name} != '' ? $row->{$column->field_name} : '&nbsp;' ; ?>
-			</td>
-			<?php }?>
 			<?php if(!$unset_delete || !$unset_edit || !$unset_read || !empty($actions)){?>
 			<td width='20%'>
 					<?php if(!$unset_delete){?>
@@ -68,6 +63,12 @@
 					?>
 			</td>
 			<?php }?>
+			<?php foreach($columns as $column){?>
+			<td width='<?php echo $column_width?>%' class='<?php if(isset($order_by[0]) &&  $column->field_name == $order_by[0]){?>sorted<?php }?>'>
+				<?php echo $row->{$column->field_name} != '' ? $row->{$column->field_name} : '&nbsp;' ; ?>
+			</td>
+			<?php }?>
+
 		</tr>
 <?php } ?>
 		</tbody>
