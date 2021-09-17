@@ -5,18 +5,19 @@
 		<table class="table table-bordered table-hover" id="flex1">
 		<thead class="thead-dark">
 			<tr>
+
+				<?php if(!$unset_delete || !$unset_edit || !$unset_read || !$unset_clone || !empty($actions)){?>
+				<th align="left" abbr="tools" axis="col1" class="" width='20%'>
+					<div class="text-right">
+						<?php echo $this->l('list_actions'); ?>
+					</div>
+				</th>
+				<?php }?>
 				<?php foreach($columns as $column){?>
 				<th width='<?php echo $column_width?>%'>
 					<div class="text-left field-sorting <?php if(isset($order_by[0]) &&  $column->field_name == $order_by[0]){?><?php echo $order_by[1]?><?php }?>"
 						rel='<?php echo $column->field_name?>'>
 						<?php echo $column->display_as?>
-					</div>
-				</th>
-				<?php }?>
-				<?php if(!$unset_delete || !$unset_edit || !$unset_read || !$unset_clone || !empty($actions)){?>
-				<th align="left" abbr="tools" axis="col1" class="" width='20%'>
-					<div class="text-right">
-						<?php echo $this->l('list_actions'); ?>
 					</div>
 				</th>
 				<?php }?>
@@ -29,21 +30,21 @@
 			<td width='20%'>
 					<?php if(!$unset_delete){?>
                     	<a href='<?php echo $row->delete_url?>' title='<?php echo $this->l('list_delete')?> <?php echo $subject?>' class="delete-row btn btn-danger" >
-                    			<i class="ti-trash"></i>
+                    			<i class="ti-eraser"></i>
                     	</a>
                     <?php }?>
                     <?php if(!$unset_edit){?>
-						<a href='<?php echo $row->edit_url?>' class="edit_button btn btn-info">
+						<a href='<?php echo $row->edit_url?>' class="edit_button btn btn-dark">
 							<i class="ti-pencil"></i>
 						</a>
 					<?php }?>
-                    <?php if(!$unset_clone){?>
+                    <!-- <?php if(!$unset_clone){?>
                         <a href='<?php echo $row->clone_url?>' title='<?php echo $this->l('list_clone')?> <?php echo $subject?>' class="clone_button btn btn-primary">
                         	<i class="ti-pencil-alt"></i>
                         </a>
-                    <?php }?>
+                    <?php }?> -->
 					<?php if(!$unset_read){?>
-						<a href='<?php echo $row->read_url?>' title='<?php echo $this->l('list_view')?> <?php echo $subject?>' class="edit_button btn btn-info">
+						<a href='<?php echo $row->read_url?>' title='<?php echo $this->l('list_view')?> <?php echo $subject?>' class="edit_button btn btn-primary">
 							<i class="ti-info"></i>
 						</a>
 					<?php }?>
