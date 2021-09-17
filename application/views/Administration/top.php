@@ -59,7 +59,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="<?php echo base_url() ?>public/assets/theme-v1/images/faces/face28.jpg" alt="profile"/>
+              <img src="<?php echo base_url().PATH_FOTOS_USUARIOS."/".$this->session->userdata('photo'); ?>" alt="<?php echo $this->session->userdata('username'); ?>"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">

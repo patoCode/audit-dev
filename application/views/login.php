@@ -25,7 +25,7 @@
       <div class="content-wrapper d-flex align-items-center auth px-0">
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
-            <div class="auth-form-light text-left py-5 px-4 px-sm-5  text-center">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5 text-center shadow-sm">
               <div class="brand-logo">
                 <img src="<?php echo base_url();?>public/imgs/logo.png" alt="logo">
               </div>

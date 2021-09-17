@@ -4,21 +4,22 @@ require_once APPPATH.'controllers/administration/BaseCrud.php';
 class EmpresaCRUD
 {
 	private $crud;
-	private $showColumns   = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT'];
-	private $createColumns = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT','USER_REG','FECHA_REG'];
-	private $editColumns   = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT','ESTADO','USER_MOD', 'FECHA_MOD'];
+	private $showColumns   = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT','LOGO'];
+	private $createColumns = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT','LOGO','USER_REG','FECHA_REG'];
+	private $editColumns   = ['NOMBRE','SIGLA','TELEFONO_FIJO','TELEFONO_CEL','PAGINA_WEB','EMAIL', 'RESPONSABLE','CI', 'EXPEDIDO_EN','NIT','LOGO','ESTADO','USER_MOD', 'FECHA_MOD'];
 
 	private $labels    = array(
-							'NOMBRE' =>'Nombre',
-							'SIGLA' =>'Sigla',
+							'NOMBRE'        =>'Nombre',
+							'SIGLA'         =>'Sigla',
 							'TELEFONO_FIJO' =>'Telf. Fijo',
-							'TELEFONO_CEL' =>'Telf.Celular',
-							'PAGINA_WEB' =>'Web',
-							'EMAIL' =>'Email',
-							'RESPONSABLE' =>'Responsable',
-							'CI' =>'C.I.',
-							'EXPEDIDO_EN' =>'Exp.',
-							'NIT' =>'NIT'
+							'TELEFONO_CEL'  =>'Telf.Celular',
+							'PAGINA_WEB'    =>'Web',
+							'EMAIL'         =>'Email',
+							'RESPONSABLE'   =>'Responsable',
+							'CI'            =>'C.I.',
+							'EXPEDIDO_EN'   =>'Exp.',
+							'NIT'           =>'NIT',
+							'LOGO'          => 'Logo'
 						);
 
 	private $table         = 'aud_empresa';
@@ -36,6 +37,7 @@ class EmpresaCRUD
 		$this->crud->setColumns($this->showColumns);
 		$this->crud->setAuditFields("#DEINS");
 		$this->crud->setDisplayFields($this->labels);
+		$this->crud->getUpload('LOGO',PATH_FOTOS_SYSTEM);
 		$this->crud->getCiudadSelect();
 	}
 

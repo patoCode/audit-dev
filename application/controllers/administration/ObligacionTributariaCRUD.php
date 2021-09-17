@@ -21,7 +21,7 @@ class ObligacionTributariaCRUD
 	private $actionIcon  = "";
 	private $username;
 
-	function __construct($subject, $showDeleteRows = true, $softDelete = true)
+	function __construct($subject, $showDeleteRows = false, $softDelete = true)
 	{
 		$this->crud = new BaseCrud($subject,$this->table,$this->idField, $showDeleteRows, $softDelete);
 		$this->crud->setShowFields($this->createColumns);

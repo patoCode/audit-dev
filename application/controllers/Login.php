@@ -33,12 +33,12 @@ class Login extends CI_Controller
         for ($i=0; $i < count($ids_privilegios); $i++) {
             $opcion = $this->privilegio->getPrivilegioBloque($ids_privilegios[$i]);
 
-            $elemento = array('URI'=>$opcion->URI, 'nombre' => $opcion->PRIVILEGIO, 'orden' =>$opcion->ORDEN);
-            if(!array_key_exists($opcion->MENU, $bloques_menu))
+            $elemento = array('URI'=>$opcion->URI, 'nombre' => $opcion->PRIVILEGIO, 'orden' =>$opcion->ORDEN,'icono' => $opcion->ICONO);
+            if(!array_key_exists($opcion->MENU."#".$opcion->MENU_ICONO, $bloques_menu))
             {
-                $bloques_menu[$opcion->MENU] = array((object) $elemento);
+                $bloques_menu[$opcion->MENU."#".$opcion->MENU_ICONO] = array((object) $elemento);
             }else{
-                array_push($bloques_menu[$opcion->MENU],(object) $elemento);
+                array_push($bloques_menu[$opcion->MENU."#".$opcion->MENU_ICONO],(object) $elemento);
             }
 
         }
@@ -60,10 +60,11 @@ class Login extends CI_Controller
             $roles = $this->rol->getRolByUser($check_user->ID_USUARIO);
             $menu = $this->createMenu($roles);
             $data_session = array(
-                            'is_logued_in'   => TRUE,
-                            'id_usuario'     => $check_user->ID_USUARIO,
-                            'username'       => $check_user->USERNAME,
-                            'menu'           => $menu
+                            'is_logued_in' => TRUE,
+                            'id_usuario'   => $check_user->ID_USUARIO,
+                            'username'     => $check_user->USERNAME,
+                            'photo'        =>$check_user->FOTO,
+                            'menu'         => $menu
                          );
             $this->session->set_userdata($data_session);
             redirect('Dashboard/index','refresh');

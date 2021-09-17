@@ -100,5 +100,8 @@ define('COPYRIGHT', '&copy; ');
 
 /* PATH  PARA ARCHIVOS */
 define('PATH_LOGO', 'assets/uploads/logo');
-define('PATH_PHOTOS', 'assets/uploads/users');
+define('PATH_FOTOS_USUARIOS', 'assets/uploads/users');
+define('PATH_FOTOS_SYSTEM', 'assets/uploads/system');
+
+
 

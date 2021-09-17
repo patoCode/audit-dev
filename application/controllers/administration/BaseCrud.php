@@ -49,9 +49,10 @@ class BaseCrud
 	{
  		$this->crud->field_type($field,'dropdown',$this->meses);
 	}
-	public function setAuditFields($username)
+	public function setAuditFields($username = null)
 	{
-		$this->username = $username;
+		$ci = & get_instance();
+		$this->username = $ci->session->userdata('username');
 		$now            = date("Y-m-d H:i:s");
 		$this->crud->field_type('USER_REG', 'hidden', $username);
 		$this->crud->field_type('FECHA_REG', 'hidden', $now);
@@ -85,7 +86,6 @@ class BaseCrud
 	}
 	public function _delete($primary_key)
 	{
-		echo "campp: ".$this->idField;
 		$ci = & get_instance();
 		$ci->load->model('Master_model','master');
 		$ci->master->delete($primary_key, $this->table, $this->idField, $this->username);
@@ -134,28 +134,6 @@ class BaseCrud
 		else
 			$this->crud->add_action('','', $route, $icon);
 	}
-	// TODO Refactorizar estos metodos
-	public function whereCompany($id)
-	{
-		$this->crud->where('id_company',$id);
-	}
-	public function inputHiddenCompany($value)
-	{
-		$this->crud->field_type("id_company", 'hidden', $value);
-	}
-	public function whereSite($id)
-	{
-		$this->crud->where('id_site',$id);
-	}
-	public function whereRol($id)
-	{
-		$this->crud->where('id_rol',$id);
-	}
-	public function inputHiddenSite($value)
-	{
-		$this->crud->field_type("id_site", 'hidden', $value);
-	}
-	//
 	public function addHiddenInput($name = "", $value = 0)
 	{
 		$this->crud->field_type($name, 'hidden', $value);
@@ -167,6 +145,9 @@ class BaseCrud
 	public function setSimpleRelation()
 	{
 		$this->crud->set_relation('id_people','people','{name} {pat_surename} {mat_surename}', array('is_delete' => CURRENT_STATUS));
+	}
+	public function getUpload($field, $path){
+		$this->crud->set_field_upload($field,$path);
 	}
 	public function getCrud()
 	{

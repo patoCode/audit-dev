@@ -26,7 +26,9 @@ class Dashboard extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('');
+		if(!$this->session->userdata('is_logued_in')){
+			redirect('Login','refresh');
+		}
 	}
 	public function index()
 	{
@@ -262,7 +264,6 @@ class Dashboard extends CI_Controller {
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
-
 	/**
 	 * @param  [type]
 	 * @param  [type]

@@ -10,11 +10,13 @@
             $cont = 0;
             $menuList = $this->session->userdata('menu');
             foreach ($menuList as $key => $menu):
+              $bloqueMenu = explode("#",$key);
           ?>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic-<?php echo $cont;?>" aria-expanded="false" aria-controls="ui-basic-<?php echo $cont;?>">
-              <i class="icon-layout menu-icon"></i>
-              <span class="menu-title"><?php echo $key;?></span>
+              <!-- <i class="icon-layout menu-icon"></i> -->
+              <i class="<?php echo $bloqueMenu[1];?>"></i> &nbsp;
+              <span class="menu-title"><?php echo $bloqueMenu[0];?></span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic-<?php echo $cont;?>">

@@ -7,6 +7,9 @@ class Home extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+		if(!$this->session->userdata('is_logued_in')){
+			redirect('Login','refresh');
+		}
 	}
 
 	public function index()

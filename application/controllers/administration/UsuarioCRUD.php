@@ -33,6 +33,8 @@ class UsuarioCRUD
 
 		$this->crud->setAuditFields("#DENIS");
 		$this->crud->setDisplayFields($this->labels);
+
+		$this->crud->getUpload('FOTO',PATH_FOTOS_USUARIOS);
 	}
 
 	/*===========================================================================*/
