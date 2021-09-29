@@ -45,18 +45,18 @@ if($success_message !== null){?>
 	<div id='main-table-box' class="main-table-box col-md-12">
 		<?php if(!$unset_add || !$unset_export || !$unset_print){?>
 			<?php if(!$unset_add){?>
-	        	<a href='<?php echo $add_url?>' class='add btn btn-success btn-rounded btn-icon-text'>
+	        	<a href='<?php echo $add_url?>' class='add btn btn-sm btn-success btn-rounded btn-icon-text'>
 	        		<i class="ti-plus btn-icon-prepend"></i> Nuevo
 	            </a>
 			<?php }?>
 			<?php if(!$unset_export) { ?>
-		    	<a class="export-anchor btn btn-primary btn-rounded btn-icon-text" href="<?php echo $export_url; ?>" download>
+		    	<a class="export-anchor btn btn-sm btn-primary btn-rounded btn-icon-text" href="<?php echo $export_url; ?>" download>
 		    		<i class="ti-write"></i>
 					<span class="export"><?php echo $this->l('list_export');?></span>
 		        </a>
 			<?php } ?>
 			<?php if(!$unset_print) { ?>
-		    	<a class="print-anchor btn btn-primary btn-rounded btn-icon-text" data-url="<?php echo $print_url; ?>">
+		    	<a class="print-anchor btn btn-sm btn-primary btn-rounded btn-icon-text" data-url="<?php echo $print_url; ?>">
 		    		<i class="ti-printer"></i>
 					<span class="print"><?php echo $this->l('list_print');?></span>
 				</a>
@@ -83,8 +83,8 @@ if($success_message !== null){?>
 			</div>
 			<div class="col-md-2">
 				<div class="btn-group">
-		            <input type="button" value="<?php echo $this->l('list_search');?>" class="crud_search btn btn-primary btn-icon-text" id='crud_search'>
-	        		<input type="button" value="<?php echo $this->l('list_clear_filtering');?>" id='search_clear' class="search_clear btn btn-danger btn-icon-text">
+		            <input type="button" value="<?php echo $this->l('list_search');?>" class="crud_search btn btn-sm btn-primary btn-icon-text" id='crud_search'>
+	        		<input type="button" value="<?php echo $this->l('list_clear_filtering');?>" id='search_clear' class="search_clear btn btn-sm btn-danger btn-icon-text">
 				</div>
         	</div>
 		</div>
@@ -105,10 +105,10 @@ if($success_message !== null){?>
 					<input type='hidden' name='order_by[1]' id='hidden-ordering' class='hidden-ordering'  value='<?php if(!empty($order_by[1])){?><?php echo $order_by[1]?><?php }?>'/>
 				</div>
 				<div class="btn-group text-right d-block">
-					<button class="pFirst pButton first-button btn btn-primary">
+					<button class="pFirst pButton first-button btn btn-sm btn-primary">
 						<i class="ti-angle-double-left"></i>
 					</button>
-					<button class="pPrev pButton prev-button btn btn-primary">
+					<button class="pPrev pButton prev-button btn btn-sm btn-primary">
 						<i class="ti-angle-left"></i>
 					</button>
 
@@ -119,13 +119,13 @@ if($success_message !== null){?>
 							<?php echo ceil($total_results / $default_per_page)?>
 						</span>
 					</span>
-					<button class="pNext pButton next-button btn btn-primary" >
+					<button class="pNext pButton next-button btn btn-sm btn-primary" >
 						<i class="ti-angle-right"></i>
 					</button>
-					<button class="pLast pButton last-button  btn btn-primary">
+					<button class="pLast pButton last-button  btn btn-sm btn-primary">
 						<i class="ti-angle-double-right"></i>
 					</button>
-					<button class="pReload pButton ajax_refresh_and_loading btn btn-success" id='ajax_refresh_and_loading'>
+					<button class="pReload pButton ajax_refresh_and_loading btn btn-sm btn-success" id='ajax_refresh_and_loading'>
 						<i class="ti-reload"></i>
 					</button>
 				</div>

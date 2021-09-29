@@ -122,10 +122,10 @@ class Dashboard extends CI_Controller {
 				->display_as('ID_CIUDAD', 'Ciudad');
 
 			$crud->set_relation('EXPEDIDO_EN','aud_ciudad','CODIGO_CIUDAD', array('aud_ciudad.ESTADO' => 'activo','aud_ciudad.ESTADO_REG' => 'vigente'));
-
 			$crud->set_relation('ID_SOCIEDAD','aud_sociedad','SOCIEDAD', array('aud_sociedad.ESTADO' => 'activo','aud_sociedad.ESTADO_REG' => 'vigente'));
 
 			$crud->set_relation('ID_CIUDAD','aud_ciudad','CIUDAD', array('aud_ciudad.ESTADO' => 'activo','aud_ciudad.ESTADO_REG' => 'vigente'));
+			$crud->add_action('Ver mas', '', 'Customer/profile','ti-user');
 
 			$crud->set_relation_n_n('REGIMEN', 'aud_cliente_regimen', 'aud_regimen', 'ID_CLIENTE', 'ID_REGIMEN', 'REGIMEN');
 			$output = $crud->render();

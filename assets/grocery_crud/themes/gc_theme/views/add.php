@@ -44,10 +44,10 @@ $this->set_js_lib($this->default_javascript_path.'/jquery_plugins/config/jquery.
 				<div id='report-success' class='report-div success alert alert-success my-2'></div>
 			</div>
 			<div class="btn-group my-3">
-				<input id="form-button-save" type='submit' value='<?php echo $this->l('form_save'); ?>'  class="btn btn-success"/>
+				<input id="form-button-save" type='submit' value='<?php echo $this->l('form_save'); ?>'  class="btn btn-sm btn-success"/>
 			<?php 	if(!$this->unset_back_to_list) { ?>
-				<input type='button' value='<?php echo $this->l('form_save_and_go_back'); ?>' id="save-and-go-back-button"  class="btn btn-primary"/>
-				<input type='button' value='<?php echo $this->l('form_cancel'); ?>' class="btn btn-secondary" id="cancel-button" />
+				<input type='button' value='<?php echo $this->l('form_save_and_go_back'); ?>' id="save-and-go-back-button"  class="btn btn-sm btn-primary"/>
+				<input type='button' value='<?php echo $this->l('form_cancel'); ?>' class="btn btn-sm btn-secondary" id="cancel-button" />
 			<?php 	} ?>
 			</div>
 			<div class='small-loading' id='FormLoading'><?php echo $this->l('form_insert_loading'); ?></div>

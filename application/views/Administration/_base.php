@@ -89,8 +89,6 @@
 	<?php else: ?>
 	<?php endif; ?>
 	<!-- END GC JS -->
-
-
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/js/vendor.bundle.base.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/chart.js/Chart.min.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/datatables.net/jquery.dataTables.js"></script>
