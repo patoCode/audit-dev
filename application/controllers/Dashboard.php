@@ -45,17 +45,7 @@ class Dashboard extends CI_Controller {
 				'RAZON_SOCIAL',
 				'PROPIETARIO_REP_LEGAL',
 				'CELULAR_REP_LEGAL',
-				'CI',
-				'EXPEDIDO_EN',
-				'ID_SOCIEDAD',
-				'REGIMEN',
-				'ID_CIUDAD',
-				'ZONA',
-				'DIRECCION_BASE',
-				'TELEFONO_DOM',
-				'CODIGO_CLIENTE',
-				'CONTACTO',
-				'EMAIL',);
+				);
 
 			$crud->add_fields('NIT',
 				'RAZON_SOCIAL',

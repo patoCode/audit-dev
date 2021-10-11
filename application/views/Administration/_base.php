@@ -11,12 +11,17 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/css/vendor.bundle.base.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/ti-icons/css/themify-icons.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/plugins/select2/select2.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/public/assets/theme-v1/js/select.dataTables.min.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/theme-v1/css/vertical-layout-light/style.css">
+
 	<link rel="shortcut icon" href="<?php echo base_url(); ?>/public/imgs/mini-logo.png" />
 	<style>
 		.nav-link{
 		  text-transform:  capitalize!important;
+		}
+		i:hover{
+			cursor: pointer;
 		}
 
 	</style>
@@ -40,17 +45,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-12 mb-4 mb-xl-0">
 
-                  <h3 class="font-weight-bold">Bienvenido usuario</h3>
-
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="row">
 			<?php
 				if(isset($output)):
@@ -89,6 +84,8 @@
 	<?php else: ?>
 	<?php endif; ?>
 	<!-- END GC JS -->
+  <script src="<?php echo base_url() ?>public/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url() ?>public/assets/plugins/serializeJSON/jquery.serializejson.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/js/vendor.bundle.base.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/chart.js/Chart.min.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/vendors/datatables.net/jquery.dataTables.js"></script>
@@ -101,6 +98,15 @@
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/todolist.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/dashboard.js"></script>
 	<script src="<?php echo base_url(); ?>/public/assets/theme-v1/js/Chart.roundedBarCharts.js"></script>
+	<!-- CUSTON SCRIPTS -->
+	<script src="<?php echo base_url() ?>public/assets/plugins/axios/axios.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url() ?>public/assets/plugins/Select2/select2.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url() ?>public/assets/plugins/Select2/i18n/es.js" type="text/javascript"></script>
+<script src="<?php echo base_url() ?>public/assets/plugins/SweetAlert2/sweetalert2.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>/public/assets/custom/filter.js"></script>
+	<script src="<?php echo base_url(); ?>/public/assets/custom/credentials.modal.js"></script>
+<script src="<?php echo base_url(); ?>/public/assets/custom/actividades.js"></script>
+	<script src="<?php echo base_url(); ?>/public/assets/custom/commons.doio.js"></script>
 
 </body>
 

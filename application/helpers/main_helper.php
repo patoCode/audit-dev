@@ -26,10 +26,12 @@ if(!function_exists('icon_status')){
 		return $icon;
     }
 }
-if(!function_exists('badge_text')){
-	function badge_text($text, $color = 'primary') {
-		$badge = '<label class="badge badge-outline-'.$color.'">'.$text.'</label>';
-		return $badge;
+if(!function_exists('badge_text_remove')){
+
+	function badge_text_remove($text, $id,$color = 'primary') {
+		return '<label class="badge badge-outline-'.$color.'">'.$text.'<i class="ti-trash ml-3" onclick="removeActividad('.$id.')"></i></label>';
+
+
     }
 }
 if(!function_exists('check_empty')){
@@ -41,3 +43,27 @@ if(!function_exists('check_empty')){
 		return $res;
     }
 }
+if(!function_exists('format_motnh')){
+	function format_motnh($monthNumber) {
+		$meses = array(
+			'1'  => 'ENERO',
+			'2'  => 'FEBRERO',
+			'3'  => 'MARZO',
+			'4'  => 'ABRIL',
+			'5'  => 'MAYO',
+			'6'  => 'JUNIO',
+			'7'  => 'JULIO',
+			'8'  => 'AGOSTO',
+			'9'  => 'SEPTIEMBRE',
+			'10' => 'OCTUBRE',
+			'11' => 'NOVIEMBRE',
+			'12' => 'DICIEMBRE'
+		);
+		if(array_key_exists($monthNumber, $meses)){
+			return $meses[$monthNumber];
+		}else{
+			return "ERROR";
+		}
+    }
+}
+

@@ -50,13 +50,13 @@
 
     <script type="text/javascript" src="<?php echo base_url(); ?>public/assets/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>public/assets/js/jquery-ui/jquery-ui.min.js "></script>
+    <script src="<?php echo base_url() ?>public/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- GC JS -->
     <?php foreach($js_files as $file): ?>
         <script src="<?php echo $file; ?>"></script>
     <?php endforeach; ?>
     <!-- END GC JS -->
     <script src="<?php echo base_url() ?>public/assets/theme-js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url() ?>public/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url() ?>public/assets/theme-js/datatables/jquery.dataTables.js" type="text/javascript"></script>
 </body>
 

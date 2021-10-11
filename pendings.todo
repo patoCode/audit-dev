@@ -1,4 +1,10 @@
  ✔ Obligaciones tibutarias @done (21-09-15 15:20)
  ✔ Certificados @done (21-09-15 15:20)
  ✔ Actividades economicas @done (21-09-15 15:58)
- ☐ 
+ ✔ Generar "Golo" -> Boton REGISTRO DATOS GENERALES -> VER GOLO @done (21-10-09 20:01)
+ ✔ Registro de usuarios y contraseñas, por cada usuario se debe registrar el usuario/pass institucion a la que pertenece este dato(Ejemplo: IMPUESTOS>USR/PASS) @done (21-10-09 20:01)
+ ☐ Apartado para documentos recibidos entregados(Ejemplo en el directorio: _docs/)
+ ✔ En el profile deberia buscar por NIT y cargar al usuario directtriz @done (21-10-10 21:35)
+ ☐ Asi9gnacion de servicio
+ ☐ Atencion de sertvicio
+
